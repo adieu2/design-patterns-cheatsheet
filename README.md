@@ -34,7 +34,7 @@ Here are some good resources about design patterns.
 
 ![](image/Observer.png)
 
-
+![](image/Decorator.png)
 
 ![](image/TemplateMethod.png)
 

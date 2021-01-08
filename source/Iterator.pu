@@ -1,0 +1,45 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Iterator</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• Decouples algorithms from containers
+• An aggregate can be traversed without exposing its representation
+endfooter
+
+interface IAggregate
+{
+   IIterator createIterator()
+}
+
+class ConcreteAggregate<T> implements IAggregate
+{
+   +IIterator createIterator()
+}
+
+interface IIterator<T>
+{
+   bool hasNext()
+   T next()
+}
+
+class ConcreteIterator<T> implements IIterator
+{
+   +bool hasNext()
+   +T next() 
+}
+
+class Client {}
+
+Client -> IIterator
+Client -> IAggregate
+ConcreteAggregate -> ConcreteIterator
+@enduml

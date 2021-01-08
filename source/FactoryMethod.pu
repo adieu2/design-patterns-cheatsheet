@@ -1,0 +1,39 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Factory Method</font>
+<font color=#999999>Creational Pattern</font>
+endheader
+
+left footer
+• Problem : creating an object without having to specify its exact class
+• Decouples the construction of an object from the object itself
+• Define an interface for creating an object, but let subclasses decide which class to instantiate
+• Very similar to template method pattern but for instantiating objects
+• Two types of classes : products and creators
+endfooter
+
+interface IProduct
+{
+}
+
+class ConcreteProduct implements IProduct
+
+abstract class ProductCreator
+{
+   +abstract IProduct factoryMethod()
+   +operation()
+}
+
+class ConcreteProductCreator extends ProductCreator
+{
+   +IProduct factoryMethod()
+}
+
+ConcreteProductCreator -- ConcreteProduct
+@enduml

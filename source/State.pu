@@ -1,0 +1,52 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>State</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• Close to the concept of Finite State Machines
+• Avoid to have many conditional statements
+• Encapsulate varying behavior in an object
+endfooter
+
+abstract class AbstractState
+{
+   -Subject subject
+   +State(Subject subject)
+   {abstract} +Start()
+   {abstract} +Action1()
+   {abstract} +Action2()
+   {abstract} +Action3()
+}
+
+class ConcreteStateA extends AbstractState
+{
+   +Start()
+   +Action1()
+   +Action2()
+   +Action3()
+}
+
+class ConcreteStateB extends AbstractState
+{
+   +Start()
+   +Action1()
+   +Action2()
+   +Action3()
+}
+
+class Subject
+{
+   -AbstractState currentState
+   +SetState(AbstractState state)
+}
+
+Subject *- AbstractState
+@enduml

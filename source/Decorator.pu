@@ -1,0 +1,46 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Decorator</font>
+<font color=#999999>Structural/Behavioral Pattern</font>
+endheader
+
+left footer
+• A decorator "is-a" and "has-a" component
+• Adds behaviour to an object without changing its class
+• Classes should be opened to extension but closed to modification
+• Useful for adhering to the Single-responsability principle
+• Alternative to subclassing (uses composition instead of inheritance)
+endfooter
+
+interface IComponent
+{
+   operation()
+}
+
+class ConcreteComponent implements IComponent
+{
+   +operation()
+}
+
+abstract class Decorator implements IComponent
+{
+   -IComponent component
+   +Decorator(IComponent component)
+   +abstract operation()
+}
+
+class ConcreteDecorator extends Decorator
+{
+   -IComponent component
+   +Decorator(IComponent component)
+   +operation()
+}
+
+Decorator o-- IComponent
+@enduml

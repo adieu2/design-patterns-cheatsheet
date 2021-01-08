@@ -1,0 +1,54 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Observer</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• One-to-many dependency between objects
+• Loosely coupled design
+• When a subject changes state, all registered observers are notified and updated automatically
+endfooter
+
+
+interface IObserver
+{
+   update(IObservable observable)
+}
+
+interface IObservable
+{
+   add(IObserver observer)
+   remove(IObserver observer)
+   notify()
+}
+ 
+class ConcreteObserverA implements IObserver
+{
+   +ObserverA(ConcreteObservable o)
+   +update(IObservable observable)
+}
+
+class ConcreteObserverB implements IObserver
+{
+   +ObserverB(ConcreteObservable o)
+   +update(IObservable observable)
+}
+
+class ConcreteObservable implements IObservable
+{
+   -IObserver[] observers
+   +add(IObserver observer)
+   +remove(IObserver observer)
+   +notify()
+}
+
+ConcreteObservable o-- "*" IObserver
+IObserver -[hidden]> IObservable
+@enduml

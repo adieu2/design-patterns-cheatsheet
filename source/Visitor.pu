@@ -1,0 +1,59 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Visitor</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• Separate an algorithm from an object structure on which it operates
+• Ability to add new operations to existing object structures without modifying the structures
+• The client calls `anElement.accept(aVisitor)`
+endfooter
+
+interface IVisitor
+{
+   visitA(ElementA element)
+   visitB(ElementB element)
+}
+
+class ConcreteVisitor1 implements IVisitor
+{
+   +visitA(ElementA element)
+   +visitB(ElementB element)
+}
+
+class ConcreteVisitor2 implements IVisitor
+{
+   +visitA(ElementA element)
+   +visitB(ElementB element)
+}
+
+class Container {}
+
+interface IElement
+{
+   accept(IVisitor visitor)
+}
+
+class ElementA implements IElement
+{
+   +accept(IVisitor visitor)
+}
+
+class ElementB implements IElement
+{
+   +accept(IVisitor visitor)
+}
+
+class Client {}
+
+Container o-- IElement
+Client --> Container
+Client --> IVisitor
+@enduml

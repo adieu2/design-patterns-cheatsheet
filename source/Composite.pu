@@ -1,0 +1,41 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Composite</font>
+<font color=#999999>Structural Pattern</font>
+endheader
+
+left footer
+• Describes objects that are treated the same way as a single instance
+• Defines a unified "Component" interface
+endfooter
+
+class Client {}
+
+interface IComponent
+{
+   operation()
+}
+
+class Leaf implements IComponent
+{
+   +operation()
+}
+
+class Composite implements IComponent
+{
+   -IComponent[] children
+   +IComponent getChildren()
+   +add(IComponent component)
+   +remove(IComponent component)
+   +operation()
+}
+
+Composite o-- "*" IComponent
+Client -> IComponent
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Adapter</font>
+<font color=#999999>Structural Pattern</font>
+endheader
+
+left footer
+• Allows the interface of an existing class to be used as another interface
+endfooter
+
+class Client {}
+
+interface ITarget
+{
+   operation1()
+   operation2()
+}
+
+class Adapter implements ITarget
+{
+   -Adaptee adaptee
+   +Adapter()
+   +operation1()
+   +operation2()
+}
+
+class Adaptee
+{
+   +function1()
+   +function2()
+}
+
+Adapter o- Adaptee
+Client - ITarget
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Facade</font>
+<font color=#999999>Structural Pattern</font>
+endheader
+
+left footer
+• Simplifies a complex interface shared among one or multiple classes
+• Improve code readability
+endfooter
+
+class Client {}
+
+interface IFacade
+{
+   doSomethingA()
+   doSomethingB()
+}
+
+class ConcreteFacade implements IFacade
+{
+   +doSomethingA()
+   +doSomethingB()
+}
+
+class Com.Example.LibraryClass1
+{
+   +complexMethod1()
+   +complexMethod2()
+}
+
+class Com.Example.LibraryClass2
+{
+   +complexMethod3()
+   +complexMethod4()
+   +complexMethod5()
+}
+
+class Com.Example.LibraryClass3
+{
+   +complexMethod6()
+}
+
+Client --> IFacade
+ConcreteFacade --> Com.Example.LibraryClass1
+ConcreteFacade --> Com.Example.LibraryClass2
+ConcreteFacade --> Com.Example.LibraryClass3
+
+Com.Example.LibraryClass1 -[Hidden]> Com.Example.LibraryClass2
+Com.Example.LibraryClass2 -[Hidden]> Com.Example.LibraryClass3
+@enduml

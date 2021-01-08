@@ -1,0 +1,50 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Abstract Factory</font>
+<font color=#999999>Creational Pattern</font>
+endheader
+
+left footer
+• Encapsulate a group of factories with common theme without specifying their concrete classes
+• The client does not know (or care) which concrete objects it gets
+endfooter
+
+interface AbstractFactory
+{
+   createProductA()
+   createProductB()
+}
+
+class ConcreteFactory1 implements AbstractFactory
+{
+   +createProductA()
+   +createProductB()
+}
+
+class ConcreteFactory2 implements AbstractFactory
+{
+   +createProductA()
+   +createProductB()
+}
+
+class ProductA1 {}
+class ProductA2 {}
+ProductA1 --() AbstractProductA
+ProductA2 --() AbstractProductA
+
+class ProductB1 {}
+class ProductB2 {}
+ProductB1 --() AbstractProductB
+ProductB2 --() AbstractProductB
+
+ConcreteFactory1 --> ProductA1
+ConcreteFactory1 --> ProductB1
+ConcreteFactory2 --> ProductA2
+ConcreteFactory2 --> ProductB2
+@enduml

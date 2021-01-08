@@ -1,0 +1,48 @@
+@startuml Strategy Pattern
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Strategy</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• Enables selecting an algorithm at runtime
+• The algorithm varies independently from clients that use it
+• Uses composition instead of inheritance
+endfooter
+
+
+interface IBehaviour
+{
+   execute()
+}
+
+class BehaviourA implements IBehaviour
+{
+   +execute()
+}
+
+class BehaviourB implements IBehaviour
+{
+   +execute()
+}
+
+class BehaviourC implements IBehaviour
+{
+   +execute()
+}
+
+class Client
+{
+   +Client(IBehaviour behaviour)
+   +void runBehaviour()
+   -IBehaviour behaviour
+}
+
+Client o-- IBehaviour
+@enduml

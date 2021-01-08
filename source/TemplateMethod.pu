@@ -1,0 +1,41 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Template Method</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• Defines the skeleton of an operation in terms of a number of high-level steps
+• The template method is a method in a superclass
+• Each concretion implements the missing methods
+endfooter
+
+class Client {}
+
+abstract class AbstractClass
+{
+   +templateMethod()
+   {abstract} -primitiveOperation1()
+   {abstract} -primitiveOperation2()
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+   -primitiveOperation1()
+   -primitiveOperation2()
+}
+
+class ConcreteClass2 extends AbstractClass
+{
+   -primitiveOperation1()
+   -primitiveOperation2()
+}
+
+Client -> AbstractClass
+@enduml

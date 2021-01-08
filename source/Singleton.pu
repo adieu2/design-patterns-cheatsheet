@@ -1,0 +1,28 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Singleton</font>
+<font color=#999999>Creational Pattern</font>
+endheader
+
+left footer
+• Only one instance of a class
+• The object can be passed as a parameter
+• The object can be serialized
+• The class can implement interfaces
+• Introduce global state
+• To be used sparingly
+endfooter
+
+class MySingleton
+{
+   -MySingleton instance
+   -MySingleton()
+   +Instance()
+}
+@enduml

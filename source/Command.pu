@@ -1,0 +1,46 @@
+@startuml
+' skinparam dpi 300
+skinparam FooterFontColor #555
+skinparam FooterFontSize 13
+hide empty fields
+hide empty methods
+
+center header
+<font color=#555555 size=20>Command</font>
+<font color=#999999>Behavioral Pattern</font>
+endheader
+
+left footer
+• An object encapsulates all information needed to perform an action at a later time
+• A command object knows about a receiver object
+endfooter
+
+interface ICommand
+{
+   execute()
+   undo()
+}
+
+class ConcreteCommand implements ICommand
+{
+   -Receiver receiver
+   +ConcreteCommand(Receiver receiver)
+   +execute()
+   +undo()
+}
+
+class Receiver
+{
+   +action()
+}
+
+class Invoker
+{
+   -ICommand command
+   +SetCommand(ICommand command)
+   +OnButtonClick()
+}
+
+Invoker o- ICommand
+Receiver -o ConcreteCommand
+@enduml
